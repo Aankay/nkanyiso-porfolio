@@ -1,0 +1,381 @@
+I have updated the CSS to properly style the avatar image. The image will now fill the circular frame and be resized to fit perfectly, similar to how a standard profile photo works.
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(145deg, #eef2f5 0%, #d9e2e8 100%);
+  font-family: system-ui, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
+  color: #1a2c3e;
+  padding: 2rem 1.5rem;
+}
+
+.cv-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 2rem;
+  box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+@media (max-width: 680px) {
+  body {
+    padding: 1rem;
+  }
+  .cv-container {
+    border-radius: 1.5rem;
+  }
+}
+
+.cv-header {
+  background: #0f2b3d;
+  color: white;
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.personal-details {
+  flex: 2;
+  min-width: 220px;
+}
+
+.personal-details h1 {
+  font-size: 2.7rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+  word-break: break-word;
+}
+
+.personal-details .title-tag {
+  font-size: 1rem;
+  font-weight: 500;
+  background: #2c4e6e;
+  display: inline-block;
+  padding: 0.2rem 1rem;
+  border-radius: 30px;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.3px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+  flex-wrap: wrap;
+  word-break: break-word;
+}
+
+.contact-item svg {
+  flex-shrink: 0;
+  fill: none;
+  stroke: #b9d9f0;
+  stroke-width: 1.8;
+}
+
+.contact-item a {
+  color: #f0f9ff;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(255,255,255,0.4);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.contact-item a:hover {
+  color: #ffdf8c;
+  border-bottom-color: #ffdf8c;
+}
+
+.profile-visual {
+  flex: 1;
+  min-width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-circle {
+  background: #dcb572;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 15px 25px -8px rgba(0,0,0,0.3);
+  border: 3px solid #f4e3c6;
+  transition: transform 0.2s;
+  overflow: hidden;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.avatar-circle span {
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #1f2f3c;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 700px) {
+  .cv-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.8rem;
+  }
+  .personal-details h1 {
+    font-size: 2.2rem;
+  }
+  .contact-info {
+    align-items: center;
+  }
+  .contact-item {
+    justify-content: center;
+  }
+}
+
+.cv-main {
+  padding: 2.5rem;
+}
+
+.grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.card-section {
+  background: #fefefe;
+  border-radius: 1.5rem;
+  padding: 0;
+}
+
+.section-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #0f2b3d;
+  border-left: 5px solid #dcb572;
+  padding-left: 1rem;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.2px;
+}
+
+.profile-text, .education-detail, .skills-list, .experience-block {
+  background: #f9fafc;
+  padding: 1.2rem 1.5rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.03);
+}
+
+.profile-text p {
+  font-size: 1.05rem;
+  color: #2c4459;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.edu-item {
+  margin-bottom: 1rem;
+}
+
+.edu-year {
+  font-weight: 700;
+  font-size: 0.9rem;
+  background: #e9edf2;
+  display: inline-block;
+  padding: 0.2rem 0.9rem;
+  border-radius: 30px;
+  color: #0f2b3d;
+  margin-bottom: 0.5rem;
+}
+
+.edu-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0.3rem 0 0.2rem 0;
+  color: #1e3a4d;
+}
+
+.edu-desc {
+  color: #3a5a72;
+  font-size: 0.95rem;
+}
+
+.skills-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.skill-badge {
+  background: white;
+  border-radius: 60px;
+  padding: 0.55rem 1.3rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  border: 1px solid #e2e8f0;
+  color: #1f4a6e;
+  transition: all 0.2s;
+}
+
+.skill-badge:hover {
+  transform: translateY(-2px);
+  background: #eef3fc;
+  border-color: #cbdde9;
+  box-shadow: 0 6px 12px -8px rgba(0,0,0,0.15);
+}
+
+.exp-item, .project-item {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #edf2f7;
+  padding-bottom: 1rem;
+}
+.exp-item:last-child, .project-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.exp-title, .project-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #1a4a66;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+.exp-org, .project-tech {
+  font-size: 0.85rem;
+  font-weight: normal;
+  background: #eef2f7;
+  padding: 0.2rem 0.7rem;
+  border-radius: 20px;
+  color: #2c607e;
+}
+.exp-desc, .project-desc {
+  margin-top: 0.5rem;
+  font-size: 0.92rem;
+  color: #385f7a;
+  line-height: 1.5;
+  padding-left: 0.5rem;
+  border-left: 2px solid #dcb572;
+}
+.exp-desc ul, .project-desc ul {
+  margin-left: 1.2rem;
+  margin-top: 0.3rem;
+}
+.exp-desc li {
+  margin-bottom: 0.2rem;
+}
+
+.passion-note {
+  margin-top: 1.8rem;
+  background: #fff6e8;
+  border-radius: 1.2rem;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid #dcb572;
+}
+
+.passion-note p {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-weight: 500;
+  color: #61481c;
+  flex-wrap: wrap;
+}
+
+.github-section {
+  background: #f6fafe;
+  border-radius: 1.2rem;
+  padding: 1rem 1.5rem;
+  margin-top: 2rem;
+  transition: all 0.2s;
+}
+.github-section h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1d495f;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.github-link {
+  background: #1e2f3c;
+  color: white;
+  text-decoration: none;
+  padding: 0.45rem 1.2rem;
+  border-radius: 40px;
+  font-weight: 500;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: background 0.2s;
+}
+.github-link:hover {
+  background: #000000cc;
+}
+
+.cv-footer {
+  background: #f0f4f8;
+  padding: 1rem 2.5rem;
+  text-align: center;
+  border-top: 1px solid #e2e9f0;
+  font-size: 0.85rem;
+  color: #2c5779;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+@media (max-width: 780px) {
+  .grid-2col {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+  .cv-main {
+    padding: 1.8rem;
+  }
+  .section-title {
+    font-size: 1.5rem;
+  }
+}
+
+hr {
+  margin: 0.75rem 0;
+  border: 0;
+  height: 1px;
+  background: #e2ecf3;
+}
+
+address {
+  font-style: normal;
+}
