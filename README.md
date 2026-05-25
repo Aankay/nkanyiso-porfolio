@@ -39,7 +39,6 @@ This portfolio is built with a lightweight, responsive HTML/CSS design and uses 
 
 - `index.html` — Main portfolio page
 - `index.css` — Custom site styles
-- `cv.html` / `cv.css` — Optional resume page and styles
  
 ## Notes
 
