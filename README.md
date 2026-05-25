@@ -17,7 +17,7 @@ This portfolio is built with a lightweight, responsive HTML/CSS design and uses 
 
 - HTML5
 - CSS3
-- Tailwind CSS (via CDN)
+- Tailwind CSS
 - Google Fonts
 
 ## Features
@@ -40,7 +40,7 @@ This portfolio is built with a lightweight, responsive HTML/CSS design and uses 
 - `index.html` — Main portfolio page
 - `index.css` — Custom site styles
 - `cv.html` / `cv.css` — Optional resume page and styles
-
+ 
 ## Notes
 
-This portfolio is designed to present a professional personal brand with immersive visuals and smooth navigation. It is ideal for showcasing multimedia development and programming capabilities.
+This portfolio is designed to present a professional personal brand with immersive visuals and smooth navigation. It is ideal for showcasing multimedia development and programming capabilities. 
