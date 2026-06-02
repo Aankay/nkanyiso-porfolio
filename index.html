@@ -9,11 +9,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="index.css"> 
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
-    
+
+    <!-- Loading Screen -->
     <div class="loader" id="loader">
         <div class="loader-text font-display">NKANYISO MAVUSO</div>
         <div class="loader-bar">
@@ -21,17 +22,17 @@
         </div>
     </div>
 
-    
+    <!-- Custom Cursor -->
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-outline" id="cursor-outline"></div>
 
-
+    <!-- Grain Overlay -->
     <div class="grain"></div>
 
-    
+    <!-- Scroll Progress -->
     <div class="scroll-progress" id="scroll-progress"></div>
 
-   
+    <!-- Toast Notification -->
     <div class="toast" id="toast">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -40,36 +41,38 @@
         <span>Downloading CV...</span>
     </div>
 
-   
+    <!-- Navigation -->
     <nav class="fixed top-0 left-0 w-full z-50 px-6 py-6 mix-blend-difference">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="#" class="font-display text-2xl font-bold tracking-tighter text-white" id="logo">
                 NKANYISO<span class="text-[#ff3e00]">.</span>
             </a>
 
-            <div class="hidden md:flex gap-8 items-center">
-                <a href="#about" class="nav-link text-sm uppercase tracking-widest">About</a>
-                <a href="#projects" class="nav-link text-sm uppercase tracking-widest">Projects</a>
-                <a href="#skills" class="nav-link text-sm uppercase tracking-widest">Skills</a>
-                <a href="#experience" class="nav-link text-sm uppercase tracking-widest">Experience</a>
-                <a href="#contact" class="nav-link text-sm uppercase tracking-widest">Contact</a>
-                <button onclick="downloadCV()" class="download-btn text-sm py-2 px-4 ml-4">
-                    <svg class="w-4 h-4 icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </svg>
-                    CV
-                </button>
-            </div>
+            <ul class="hidden md:flex gap-8 items-center list-none">
+                <li><a href="#about" class="nav-link text-sm uppercase tracking-widest">About</a></li>
+                <li><a href="#projects" class="nav-link text-sm uppercase tracking-widest">Projects</a></li>
+                <li><a href="#skills" class="nav-link text-sm uppercase tracking-widest">Skills</a></li>
+                <li><a href="#experience" class="nav-link text-sm uppercase tracking-widest">Experience</a></li>
+                <li><a href="#contact" class="nav-link text-sm uppercase tracking-widest">Contact</a></li>
+                <li>
+                    <button onclick="downloadCV()" class="download-btn text-sm py-2 px-4">
+                        <svg class="w-4 h-4 icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        CV
+                    </button>
+                </li>
+            </ul>
 
             <div class="flex items-center gap-4 md:hidden">
-                <button onclick="downloadCV()" class="download-btn text-xs py-2 px-3">
+                <button onclick="downloadCV()" class="download-btn text-xs py-2 px-3" aria-label="Download CV">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                     </svg>
                 </button>
-                <button class="text-white" id="menu-toggle">
+                <button class="text-white" id="menu-toggle" aria-label="Open menu">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
@@ -79,34 +82,32 @@
         </div>
     </nav>
 
-    
-    <div class="mobile-menu" id="mobile-menu">
-        <button class="absolute top-6 right-6 text-white" id="menu-close">
+    <!-- Mobile Menu -->
+    <dialog class="mobile-menu" id="mobile-menu">
+        <button class="absolute top-6 right-6 text-white" id="menu-close" aria-label="Close menu">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </button>
-        <a href="#about" class="font-display text-4xl mb-6 hover:text-[#ff3e00] transition-colors mobile-link">About</a>
-        <a href="#projects"
-            class="font-display text-4xl mb-6 hover:text-[#ff3e00] transition-colors mobile-link">Projects</a>
-        <a href="#skills"
-            class="font-display text-4xl mb-6 hover:text-[#ff3e00] transition-colors mobile-link">Skills</a>
-        <a href="#experience"
-            class="font-display text-4xl mb-6 hover:text-[#ff3e00] transition-colors mobile-link">Experience</a>
-        <a href="#contact"
-            class="font-display text-4xl mb-8 hover:text-[#ff3e00] transition-colors mobile-link">Contact</a>
-        <button onclick="downloadCV(); document.getElementById('mobile-menu').classList.remove('active');"
-            class="download-btn text-lg">
-            <svg class="w-5 h-5 icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-            </svg>
-            Download CV
-        </button>
-    </div>
+        <nav class="flex flex-col items-center">
+            <a href="#about" class="font-display text-4xl mb-6 hover:text-[#ff3e00] transition-colors mobile-link">About</a>
+            <a href="#projects" class="font-display text-4xl mb-6 hover:text-[#ff3e00] transition-colors mobile-link">Projects</a>
+            <a href="#skills" class="font-display text-4xl mb-6 hover:text-[#ff3e00] transition-colors mobile-link">Skills</a>
+            <a href="#experience" class="font-display text-4xl mb-6 hover:text-[#ff3e00] transition-colors mobile-link">Experience</a>
+            <a href="#contact" class="font-display text-4xl mb-8 hover:text-[#ff3e00] transition-colors mobile-link">Contact</a>
+            <button onclick="downloadCV(); document.getElementById('mobile-menu').classList.remove('active');"
+                class="download-btn text-lg">
+                <svg class="w-5 h-5 icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Download CV
+            </button>
+        </nav>
+    </dialog>
 
-   
-    <section class="min-h-screen flex items-center justify-center relative overflow-hidden px-6">
+    <!-- Hero Section -->
+    <header class="min-h-screen flex items-center justify-center relative overflow-hidden px-6">
         <div class="absolute inset-0 z-0">
             <div
                 class="absolute top-1/4 left-1/4 w-96 h-96 bg-[#ff3e00] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse">
@@ -145,27 +146,27 @@
                 </button>
             </div>
 
-            <div class="mt-12 flex justify-center gap-6 opacity-0 animate-[fadeIn_1s_ease_forwards_2s]">
-                <a href="https://linkedin.com/in/nkanyiso-mavuso-a9877b101" target="_blank"
-                    class="text-gray-500 hover:text-[#ff3e00] transition-colors">
+            <address class="mt-12 flex justify-center gap-6 opacity-0 animate-[fadeIn_1s_ease_forwards_2s] not-italic">
+                <a href="https://linkedin.com/in/nkanyiso-mavuso-a9877b101" target="_blank" rel="noopener noreferrer"
+                    class="text-gray-500 hover:text-[#ff3e00] transition-colors" aria-label="LinkedIn Profile">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                         <path
                             d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                     </svg>
                 </a>
-                <a href="mailto:nkagza45@gmail.com" class="text-gray-500 hover:text-[#ff3e00] transition-colors">
+                <a href="mailto:nkagza45@gmail.com" class="text-gray-500 hover:text-[#ff3e00] transition-colors" aria-label="Send Email">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                 </a>
-                <a href="tel:0656181190" class="text-gray-500 hover:text-[#ff3e00] transition-colors">
+                <a href="tel:0656181190" class="text-gray-500 hover:text-[#ff3e00] transition-colors" aria-label="Call Phone">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                 </a>
-            </div>
+            </address>
         </div>
 
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
@@ -173,39 +174,30 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
         </div>
-    </section>
+    </header>
 
-    
+    <!-- About Section -->
     <section id="about" class="py-32 px-6 relative">
         <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="relative order-2 md:order-1">
+                <figure class="relative order-2 md:order-1">
                     <div class="code-block rounded-2xl p-8 pt-12">
                         <div class="absolute top-2 left-4 flex gap-2">
                             <div class="w-3 h-3 rounded-full bg-red-500"></div>
                             <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
                             <div class="w-3 h-3 rounded-full bg-green-500"></div>
                         </div>
-                        <div class="font-mono text-sm text-gray-300 space-y-4">
-                            <div><span class="text-[#ff3e00]">const</span> <span class="text-[#00d9ff]">developer</span>
-                                = {</div>
-                            <div class="pl-4"><span class="text-purple-400">name</span>: <span
-                                    class="text-green-400">'Nkanyiso Mavuso'</span>,</div>
-                            <div class="pl-4"><span class="text-purple-400">location</span>: <span
-                                    class="text-green-400">'South Africa'</span>,</div>
-                            <div class="pl-4"><span class="text-purple-400">education</span>: <span
-                                    class="text-green-400">'Diploma in Multimedia Computing'</span>,</div>
-                            <div class="pl-4"><span class="text-purple-400">focus</span>: [<span
-                                    class="text-green-400">'Web Dev'</span>, <span class="text-green-400">'3D
-                                    Environments'</span>, <span class="text-green-400">'IT Support'</span>],</div>
-                            <div class="pl-4"><span class="text-purple-400">passion</span>: <span
-                                    class="text-green-400">'Building immersive digital experiences'</span></div>
-                            <div>};</div>
-                        </div>
+                        <pre class="font-mono text-sm text-gray-300 space-y-4"><code><span class="text-[#ff3e00]">const</span> <span class="text-[#00d9ff]">developer</span> = {
+    <span class="text-purple-400">name</span>: <span class="text-green-400">'Nkanyiso Mavuso'</span>,
+    <span class="text-purple-400">location</span>: <span class="text-green-400">'South Africa'</span>,
+    <span class="text-purple-400">education</span>: <span class="text-green-400">'Diploma in Multimedia Computing'</span>,
+    <span class="text-purple-400">focus</span>: [<span class="text-green-400">'Web Dev'</span>, <span class="text-green-400">'3D Environments'</span>, <span class="text-green-400">'IT Support'</span>],
+    <span class="text-purple-400">passion</span>: <span class="text-green-400">'Building immersive digital experiences'</span>
+};</code></pre>
                     </div>
-                </div>
+                </figure>
 
-                <div class="order-1 md:order-2">
+                <article class="order-1 md:order-2">
                     <p class="text-[#ff3e00] font-mono mb-4 tracking-widest text-sm">ABOUT ME</p>
                     <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">
                         Where <span class="text-[#ff3e00]">Code</span> meets <span
@@ -227,17 +219,17 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                         </svg>
-                        Download Full CV
+                        Download Full CV   
                     </button>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
-    
+    <!-- Projects Section -->
     <section id="projects" class="py-32 px-6 bg-[#0f0f0f]">
         <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16">
+            <header class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16">
                 <div>
                     <p class="text-[#ff3e00] font-mono mb-2 tracking-widest text-sm">PORTFOLIO</p>
                     <h2 class="font-display text-5xl md:text-6xl font-bold">Featured Projects</h2>
@@ -246,12 +238,12 @@
                     A selection of academic and personal projects demonstrating software development and 3D
                     capabilities.
                 </p>
-            </div>
+            </header>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                
-                <div class="project-card rounded-2xl group cursor-pointer">
-                    <div class="overflow-hidden rounded-t-2xl relative">
+            <ul class="grid md:grid-cols-2 gap-8 list-none p-0">
+                <!-- Project 1 -->
+                <li class="project-card rounded-2xl group cursor-pointer">
+                    <figure class="overflow-hidden rounded-t-2xl relative m-0">
                         <div
                             class="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center">
                             <svg class="w-24 h-24 text-white opacity-50" fill="none" stroke="currentColor"
@@ -262,9 +254,9 @@
                         </div>
                         <div class="project-image bg-gradient-to-br from-gray-800 to-gray-900" style="height: 300px;">
                         </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
+                    </figure>
+                    <article class="p-6">
+                        <header class="flex justify-between items-start mb-4">
                             <div>
                                 <h3
                                     class="font-display text-2xl font-bold mb-2 group-hover:text-[#ff3e00] transition-colors">
@@ -273,26 +265,24 @@
                             </div>
                             <span
                                 class="text-[#00d9ff] font-mono text-xs border border-[#00d9ff] px-2 py-1 rounded">ACADEMIC</span>
-                        </div>
-                        <div class="flex gap-2 flex-wrap">
-                            <span class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">Java</span>
-                            <span class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">OOP</span>
-                            <span class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">File I/O</span>
-                        </div>
-                    </div>
+                        </header>
+                        <ul class="flex gap-2 flex-wrap list-none p-0">
+                            <li class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">Java</li>
+                            <li class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">OOP</li>
+                            <li class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">File I/O</li>
+                        </ul>
+                    </article>
                     <div class="project-overlay">
                         <p class="text-white mb-4">Built a comprehensive Java application using Object-Oriented
                             Programming principles to manage student records, calculate marks, and generate reports with
                             persistent data storage.</p>
-                        <div class="flex gap-4">
-                            <span class="text-[#ff3e00] text-sm font-semibold">Console Application</span>
-                        </div>
+                        <span class="text-[#ff3e00] text-sm font-semibold">Console Application</span>
                     </div>
-                </div>
+                </li>
 
-             
-                <div class="project-card rounded-2xl group cursor-pointer">
-                    <div class="overflow-hidden rounded-t-2xl relative">
+                <!-- Project 2 -->
+                <li class="project-card rounded-2xl group cursor-pointer">
+                    <figure class="overflow-hidden rounded-t-2xl relative m-0">
                         <div
                             class="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
                             <svg class="w-24 h-24 text-white opacity-50" fill="none" stroke="currentColor"
@@ -303,9 +293,9 @@
                         </div>
                         <div class="project-image bg-gradient-to-br from-gray-800 to-gray-900" style="height: 300px;">
                         </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
+                    </figure>
+                    <article class="p-6">
+                        <header class="flex justify-between items-start mb-4">
                             <div>
                                 <h3
                                     class="font-display text-2xl font-bold mb-2 group-hover:text-[#ff3e00] transition-colors">
@@ -314,27 +304,25 @@
                             </div>
                             <span class="text-[#00d9ff] font-mono text-xs border border-[#00d9ff] px-2 py-1 rounded">WIL
                                 PROJECT</span>
-                        </div>
-                        <div class="flex gap-2 flex-wrap">
-                            <span class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">Unity</span>
-                            <span class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">Blender</span>
-                            <span class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">3D Modeling</span>
-                            <span class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">Lighting</span>
-                        </div>
-                    </div>
+                        </header>
+                        <ul class="flex gap-2 flex-wrap list-none p-0">
+                            <li class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">Unity</li>
+                            <li class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">Blender</li>
+                            <li class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">3D Modeling</li>
+                            <li class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">Lighting</li>
+                        </ul>
+                    </article>
                     <div class="project-overlay">
                         <p class="text-white mb-4">Created a complete 3D town environment in Blender with optimized
                             assets, then implemented in Unity featuring optimized lighting systems and interactive
                             camera controls.</p>
-                        <div class="flex gap-4">
-                            <span class="text-[#ff3e00] text-sm font-semibold">Immersive Environment</span>
-                        </div>
+                        <span class="text-[#ff3e00] text-sm font-semibold">Immersive Environment</span>
                     </div>
-                </div>
+                </li>
 
-               
-                <div class="project-card rounded-2xl group cursor-pointer">
-                    <div class="overflow-hidden rounded-t-2xl relative">
+                <!-- Project 3 -->
+                <li class="project-card rounded-2xl group cursor-pointer">
+                    <figure class="overflow-hidden rounded-t-2xl relative m-0">
                         <div
                             class="absolute inset-0 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
                             <svg class="w-24 h-24 text-white opacity-50" fill="none" stroke="currentColor"
@@ -345,9 +333,9 @@
                         </div>
                         <div class="project-image bg-gradient-to-br from-gray-800 to-gray-900" style="height: 300px;">
                         </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
+                    </figure>
+                    <article class="p-6">
+                        <header class="flex justify-between items-start mb-4">
                             <div>
                                 <h3
                                     class="font-display text-2xl font-bold mb-2 group-hover:text-[#ff3e00] transition-colors">
@@ -356,28 +344,26 @@
                             </div>
                             <span
                                 class="text-[#00d9ff] font-mono text-xs border border-[#00d9ff] px-2 py-1 rounded">MULTIPLE</span>
-                        </div>
-                        <div class="flex gap-2 flex-wrap">
-                            <span class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">HTML5</span>
-                            <span class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">CSS3</span>
-                            <span class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">JavaScript</span>
-                            <span class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">React</span>
-                            <span class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">Node.js</span>
-                        </div>
-                    </div>
+                        </header>
+                        <ul class="flex gap-2 flex-wrap list-none p-0">
+                            <li class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">HTML5</li>
+                            <li class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">CSS3</li>
+                            <li class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">JavaScript</li>
+                            <li class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">React</li>
+                            <li class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">Node.js</li>
+                        </ul>
+                    </article>
                     <div class="project-overlay">
                         <p class="text-white mb-4">Collection of responsive websites and web applications built using
                             modern frameworks. Includes portfolio sites, dashboard interfaces, and interactive web
                             experiences.</p>
-                        <div class="flex gap-4">
-                            <span class="text-[#ff3e00] text-sm font-semibold">Web Development</span>
-                        </div>
+                        <span class="text-[#ff3e00] text-sm font-semibold">Web Development</span>
                     </div>
-                </div>
+                </li>
 
-              
-                <div class="project-card rounded-2xl group cursor-pointer">
-                    <div class="overflow-hidden rounded-t-2xl relative">
+                <!-- Project 4 -->
+                <li class="project-card rounded-2xl group cursor-pointer">
+                    <figure class="overflow-hidden rounded-t-2xl relative m-0">
                         <div
                             class="absolute inset-0 bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center">
                             <svg class="w-24 h-24 text-white opacity-50" fill="none" stroke="currentColor"
@@ -388,9 +374,9 @@
                         </div>
                         <div class="project-image bg-gradient-to-br from-gray-800 to-gray-900" style="height: 300px;">
                         </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
+                    </figure>
+                    <article class="p-6">
+                        <header class="flex justify-between items-start mb-4">
                             <div>
                                 <h3
                                     class="font-display text-2xl font-bold mb-2 group-hover:text-[#ff3e00] transition-colors">
@@ -399,40 +385,38 @@
                             </div>
                             <span
                                 class="text-[#00d9ff] font-mono text-xs border border-[#00d9ff] px-2 py-1 rounded">ACADEMIC</span>
-                        </div>
-                        <div class="flex gap-2 flex-wrap">
-                            <span class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">SQL</span>
-                            <span class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">Database Design</span>
-                            <span class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">XAMPP</span>
-                        </div>
-                    </div>
+                        </header>
+                        <ul class="flex gap-2 flex-wrap list-none p-0">
+                            <li class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">SQL</li>
+                            <li class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">Database Design</li>
+                            <li class="text-xs text-gray-500 bg-gray-800 px-2 py-1 rounded">XAMPP</li>
+                        </ul>
+                    </article>
                     <div class="project-overlay">
                         <p class="text-white mb-4">Designed and implemented relational database systems with complex
                             queries, normalization, and integration with web applications for dynamic content
                             management.</p>
-                        <div class="flex gap-4">
-                            <span class="text-[#ff3e00] text-sm font-semibold">Backend Systems</span>
-                        </div>
+                        <span class="text-[#ff3e00] text-sm font-semibold">Backend Systems</span>
                     </div>
-                </div>
-            </div>
+                </li>
+            </ul>
         </div>
     </section>
 
-    
+    <!-- Skills Section -->
     <section id="skills" class="py-32 px-6">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
+            <header class="text-center mb-16">
                 <p class="text-[#ff3e00] font-mono mb-2 tracking-widest text-sm">EXPERTISE</p>
                 <h2 class="font-display text-5xl md:text-6xl font-bold mb-4">Technical Skills</h2>
                 <p class="text-gray-400 max-w-2xl mx-auto">Multidisciplinary skill set spanning software development, 3D
                     design, and IT infrastructure.</p>
-            </div>
+            </header>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-               
-                <div class="skill-category rounded-2xl p-6">
-                    <div class="flex items-center gap-3 mb-4">
+            <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 list-none p-0">
+                <!-- Programming -->
+                <li class="skill-category rounded-2xl p-6">
+                    <header class="flex items-center gap-3 mb-4">
                         <div class="w-10 h-10 rounded-lg bg-[#ff3e00]/20 flex items-center justify-center">
                             <svg class="w-5 h-5 text-[#ff3e00]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -440,20 +424,20 @@
                             </svg>
                         </div>
                         <h3 class="font-display text-xl font-bold">Programming</h3>
-                    </div>
-                    <div class="flex flex-wrap">
-                        <span class="skill-item">Java</span>
-                        <span class="skill-item">JavaScript</span>
-                        <span class="skill-item">HTML5</span>
-                        <span class="skill-item">CSS3</span>
-                        <span class="skill-item">SQL</span>
-                        <span class="skill-item">OOP</span>
-                    </div>
-                </div>
+                    </header>
+                    <ul class="flex flex-wrap list-none p-0">
+                        <li class="skill-item">Java</li>
+                        <li class="skill-item">JavaScript</li>
+                        <li class="skill-item">HTML5</li>
+                        <li class="skill-item">CSS3</li>
+                        <li class="skill-item">SQL</li>
+                        <li class="skill-item">OOP</li>
+                    </ul>
+                </li>
 
-                
-                <div class="skill-category rounded-2xl p-6">
-                    <div class="flex items-center gap-3 mb-4">
+                <!-- Web Development -->
+                <li class="skill-category rounded-2xl p-6">
+                    <header class="flex items-center gap-3 mb-4">
                         <div class="w-10 h-10 rounded-lg bg-[#00d9ff]/20 flex items-center justify-center">
                             <svg class="w-5 h-5 text-[#00d9ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -461,19 +445,19 @@
                             </svg>
                         </div>
                         <h3 class="font-display text-xl font-bold">Web Development</h3>
-                    </div>
-                    <div class="flex flex-wrap">
-                        <span class="skill-item">React</span>
-                        <span class="skill-item">Node.js</span>
-                        <span class="skill-item">Responsive Design</span>
-                        <span class="skill-item">REST APIs</span>
-                        <span class="skill-item">Git</span>
-                    </div>
-                </div>
+                    </header>
+                    <ul class="flex flex-wrap list-none p-0">
+                        <li class="skill-item">React</li>
+                        <li class="skill-item">Node.js</li>
+                        <li class="skill-item">Responsive Design</li>
+                        <li class="skill-item">REST APIs</li>
+                        <li class="skill-item">Git</li>
+                    </ul>
+                </li>
 
-               
-                <div class="skill-category rounded-2xl p-6">
-                    <div class="flex items-center gap-3 mb-4">
+                <!-- 3D & Multimedia -->
+                <li class="skill-category rounded-2xl p-6">
+                    <header class="flex items-center gap-3 mb-4">
                         <div class="w-10 h-10 rounded-lg bg-[#7000ff]/20 flex items-center justify-center">
                             <svg class="w-5 h-5 text-[#7000ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -481,19 +465,19 @@
                             </svg>
                         </div>
                         <h3 class="font-display text-xl font-bold">3D & Multimedia</h3>
-                    </div>
-                    <div class="flex flex-wrap">
-                        <span class="skill-item">Unity</span>
-                        <span class="skill-item">Blender</span>
-                        <span class="skill-item">3D Modeling</span>
-                        <span class="skill-item">Environment Design</span>
-                        <span class="skill-item">Adobe Creative Suite</span>
-                    </div>
-                </div>
+                    </header>
+                    <ul class="flex flex-wrap list-none p-0">
+                        <li class="skill-item">Unity</li>
+                        <li class="skill-item">Blender</li>
+                        <li class="skill-item">3D Modeling</li>
+                        <li class="skill-item">Environment Design</li>
+                        <li class="skill-item">Adobe Creative Suite</li>
+                    </ul>
+                </li>
 
-               
-                <div class="skill-category rounded-2xl p-6">
-                    <div class="flex items-center gap-3 mb-4">
+                <!-- Development Tools -->
+                <li class="skill-category rounded-2xl p-6">
+                    <header class="flex items-center gap-3 mb-4">
                         <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
                             <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -503,18 +487,18 @@
                             </svg>
                         </div>
                         <h3 class="font-display text-xl font-bold">Development Tools</h3>
-                    </div>
-                    <div class="flex flex-wrap">
-                        <span class="skill-item">VS Code</span>
-                        <span class="skill-item">XAMPP</span>
-                        <span class="skill-item">Git</span>
-                        <span class="skill-item">GitHub</span>
-                    </div>
-                </div>
+                    </header>
+                    <ul class="flex flex-wrap list-none p-0">
+                        <li class="skill-item">VS Code</li>
+                        <li class="skill-item">XAMPP</li>
+                        <li class="skill-item">Git</li>
+                        <li class="skill-item">GitHub</li>
+                    </ul>
+                </li>
 
-              
-                <div class="skill-category rounded-2xl p-6">
-                    <div class="flex items-center gap-3 mb-4">
+                <!-- IT Support -->
+                <li class="skill-category rounded-2xl p-6">
+                    <header class="flex items-center gap-3 mb-4">
                         <div class="w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center">
                             <svg class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -522,18 +506,18 @@
                             </svg>
                         </div>
                         <h3 class="font-display text-xl font-bold">IT Support</h3>
-                    </div>
-                    <div class="flex flex-wrap">
-                        <span class="skill-item">Hardware Troubleshooting</span>
-                        <span class="skill-item">System Configuration</span>
-                        <span class="skill-item">Networking Fundamentals</span>
-                        <span class="skill-item">Technical Documentation</span>
-                    </div>
-                </div>
+                    </header>
+                    <ul class="flex flex-wrap list-none p-0">
+                        <li class="skill-item">Hardware Troubleshooting</li>
+                        <li class="skill-item">System Configuration</li>
+                        <li class="skill-item">Networking Fundamentals</li>
+                        <li class="skill-item">Technical Documentation</li>
+                    </ul>
+                </li>
 
-              
-                <div class="skill-category rounded-2xl p-6">
-                    <div class="flex items-center gap-3 mb-4">
+                <!-- Database -->
+                <li class="skill-category rounded-2xl p-6">
+                    <header class="flex items-center gap-3 mb-4">
                         <div class="w-10 h-10 rounded-lg bg-pink-500/20 flex items-center justify-center">
                             <svg class="w-5 h-5 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -541,32 +525,32 @@
                             </svg>
                         </div>
                         <h3 class="font-display text-xl font-bold">Database</h3>
-                    </div>
-                    <div class="flex flex-wrap">
-                        <span class="skill-item">Database Design</span>
-                        <span class="skill-item">SQL Queries</span>
-                        <span class="skill-item">Data Normalization</span>
-                        <span class="skill-item">MySQL</span>
-                    </div>
-                </div>
-            </div>
+                    </header>
+                    <ul class="flex flex-wrap list-none p-0">
+                        <li class="skill-item">Database Design</li>
+                        <li class="skill-item">SQL Queries</li>
+                        <li class="skill-item">Data Normalization</li>
+                        <li class="skill-item">MySQL</li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </section>
 
-    
+    <!-- Experience Section -->
     <section id="experience" class="py-32 px-6 bg-[#0f0f0f]">
         <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16">
+            <header class="text-center mb-16">
                 <p class="text-[#ff3e00] font-mono mb-2 tracking-widest text-sm">JOURNEY</p>
                 <h2 class="font-display text-5xl md:text-6xl font-bold">Experience</h2>
-            </div>
+            </header>
 
-            <div class="relative">
-                <div class="timeline-item">
+            <ul class="relative list-none p-0">
+                <li class="timeline-item">
                     <div class="timeline-dot"></div>
-                    <div class="mb-2">
+                    <header class="mb-2">
                         <span class="text-[#00d9ff] font-mono text-sm">WIL Internship</span>
-                    </div>
+                    </header>
                     <h3 class="font-display text-2xl font-bold mb-2">IT / Multimedia Development Intern</h3>
                     <p class="text-[#ff3e00] mb-4">Tshwane University of Technology</p>
                     <ul class="text-gray-400 space-y-2 list-disc list-inside">
@@ -575,13 +559,13 @@
                         <li>Collaborated with project teams to resolve development environment issues</li>
                         <li>Delivered optimized 3D environments improving rendering efficiency and usability</li>
                     </ul>
-                </div>
+                </li>
 
-                <div class="timeline-item">
+                <li class="timeline-item">
                     <div class="timeline-dot"></div>
-                    <div class="mb-2">
+                    <header class="mb-2">
                         <span class="text-[#00d9ff] font-mono text-sm">Internship</span>
-                    </div>
+                    </header>
                     <h3 class="font-display text-2xl font-bold mb-2">IT Intern</h3>
                     <p class="text-[#ff3e00] mb-4">B & T Skills Development</p>
                     <ul class="text-gray-400 space-y-2 list-disc list-inside">
@@ -590,21 +574,21 @@
                         <li>Documented technical procedures and user guides</li>
                         <li>Resolved user issues, improving system reliability and reducing recurring problems</li>
                     </ul>
-                </div>
+                </li>
 
-                <div class="timeline-item" style="border-left-color: transparent;">
+                <li class="timeline-item" style="border-left-color: transparent;">
                     <div class="timeline-dot"></div>
-                    <div class="mb-2">
+                    <header class="mb-2">
                         <span class="text-[#00d9ff] font-mono text-sm">Education</span>
-                    </div>
+                    </header>
                     <h3 class="font-display text-2xl font-bold mb-2">Diploma in Multimedia Computing</h3>
                     <p class="text-[#ff3e00] mb-4">Tshwane University of Technology</p>
                     <p class="text-gray-400">
                         Comprehensive program covering software development, web technologies, 3D modeling, animation,
                         and multimedia systems. Completed Work Integrated Learning (WIL) with honors.
                     </p>
-                </div>
-            </div>
+                </li>
+            </ul>
 
             <div class="mt-12 text-center">
                 <button onclick="downloadCV()" class="download-btn text-lg">
@@ -618,7 +602,7 @@
         </div>
     </section>
 
-   
+    <!-- Contact Section -->
     <section id="contact" class="py-32 px-6 relative overflow-hidden">
         <div class="absolute inset-0 z-0">
             <div
@@ -627,7 +611,7 @@
         </div>
 
         <div class="max-w-4xl mx-auto relative z-10">
-            <div class="text-center mb-16">
+            <header class="text-center mb-16">
                 <p class="text-[#ff3e00] font-mono mb-4 tracking-widest text-sm">GET IN TOUCH</p>
                 <h2 class="font-display text-5xl md:text-6xl font-bold mb-6">
                     Let's work<br />
@@ -638,9 +622,9 @@
                     Open for entry-level Software Developer, IT Support, or Technical Analyst roles. Based in South
                     Africa, available for remote work.
                 </p>
-            </div>
+            </header>
 
-            <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-16">
+            <address class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-16 not-italic">
                 <a href="mailto:nkagza45@gmail.com" class="contact-link rounded-lg">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -663,7 +647,7 @@
                     </div>
                 </a>
 
-                <a href="https://linkedin.com/in/nkanyiso-mavuso-a9877b101" target="_blank"
+                <a href="https://linkedin.com/in/nkanyiso-mavuso-a9877b101" target="_blank" rel="noopener noreferrer"
                     class="contact-link rounded-lg md:col-span-2 justify-center">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                         <path
@@ -674,7 +658,7 @@
                         <div class="font-semibold">linkedin.com/in/nkanyiso-mavuso-a9877b101</div>
                     </div>
                 </a>
-            </div>
+            </address>
 
             <div class="text-center space-y-4">
                 <a href="mailto:nkagza45@gmail.com?subject=Job Opportunity" class="magnetic-btn text-lg inline-flex">
@@ -698,7 +682,7 @@
         </div>
     </section>
 
-   
+    <!-- Floating Download Button -->
     <button onclick="downloadCV()" class="floating-download" id="floating-download">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -707,7 +691,7 @@
         <span class="hidden sm:inline">Download CV</span>
     </button>
 
- 
+    <!-- Footer -->
     <footer class="py-8 px-6 border-t border-[#222]">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <p class="text-gray-500 text-sm">© 2024 Nkanyiso Mavuso. All rights reserved.</p>
@@ -715,235 +699,219 @@
         </div>
     </footer>
 
-
-</body>
-
-<script>
-    
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            document.getElementById('loader').classList.add('hidden');
-        }, 1500);
-    });
-
-   
-    const cursorDot = document.getElementById('cursor-dot');
-    const cursorOutline = document.getElementById('cursor-outline');
-
-    window.addEventListener('mousemove', (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
-
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
-
-        cursorOutline.animate({
-            left: `${posX}px`,
-            top: `${posY}px`
-        }, { duration: 500, fill: 'forwards' });
-    });
-
-   
-    const interactiveElements = document.querySelectorAll('a, button, .project-card, .skill-item, .contact-link');
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
-            cursorOutline.style.borderColor = '#ff3e00';
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1500);
         });
-        el.addEventListener('mouseleave', () => {
-            cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
-            cursorOutline.style.borderColor = 'rgba(255, 62, 0, 0.3)';
+
+        const cursorDot = document.getElementById('cursor-dot');
+        const cursorOutline = document.getElementById('cursor-outline');
+
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: 'forwards' });
         });
-    });
 
-    
-    window.addEventListener('scroll', () => {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        document.getElementById('scroll-progress').style.width = scrolled + '%';
-    });
+        const interactiveElements = document.querySelectorAll('a, button, .project-card, .skill-item, .contact-link');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                cursorOutline.style.borderColor = '#ff3e00';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursorOutline.style.borderColor = 'rgba(255, 62, 0, 0.3)';
+            });
+        });
 
-   
-    const menuToggle = document.getElementById('menu-toggle');
-    const menuClose = document.getElementById('menu-close');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileLinks = document.querySelectorAll('.mobile-link');
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scroll-progress').style.width = scrolled + '%';
+        });
 
-    menuToggle.addEventListener('click', () => {
-        mobileMenu.classList.add('active');
-    });
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
 
-    menuClose.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-    });
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
 
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
+        menuClose.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
         });
-    });
 
-  
-    const magneticBtns = document.querySelectorAll('.magnetic-btn');
-
-    magneticBtns.forEach(btn => {
-        btn.addEventListener('mousemove', (e) => {
-            const rect = btn.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-
-            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
         });
 
-        btn.addEventListener('mouseleave', () => {
-            btn.style.transform = 'translate(0, 0)';
-        });
-    });
+        const magneticBtns = document.querySelectorAll('.magnetic-btn');
 
-    
-    function downloadCV() {
-        const toast = document.getElementById('toast');
-        toast.classList.add('show');
+        magneticBtns.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
 
-        
-        const link = document.createElement('a');
-        link.href = 'Nkanyiso_Mavuso_CV.pdf';
-        link.download = 'Nkanyiso_Mavuso_CV.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
 
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 3000);
-    }
-
-    
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-
-  
-    document.querySelectorAll('.timeline-item, .project-card, .skill-category').forEach((el, index) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-        observer.observe(el);
-    });
-
-  
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (scrollY >= sectionTop - 200) {
-                current = section.getAttribute('id');
-            }
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0, 0)';
+            });
         });
 
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').slice(1) === current) {
-                link.classList.add('active');
-            }
-        });
-    });
+        function downloadCV() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
 
-   
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const parallax = document.querySelector('.hero-text');
-        if (parallax) {
-            parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
-        }
-    });
+            const link = document.createElement('a');
+            link.href = 'Nkanyiso_Mavuso_CV.pdf';
+            link.download = 'Nkanyiso_Mavuso_CV.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
 
-   
-    class TextScramble {
-        constructor(el) {
-            this.el = el;
-            this.chars = '!<>-_\\/[]{}—=+*^?#________';
-            this.update = this.update.bind(this);
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
         }
 
-        setText(newText) {
-            const oldText = this.el.innerText;
-            const length = Math.max(oldText.length, newText.length);
-            const promise = new Promise((resolve) => this.resolve = resolve);
-            this.queue = [];
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
 
-            for (let i = 0; i < length; i++) {
-                const from = oldText[i] || '';
-                const to = newText[i] || '';
-                const start = Math.floor(Math.random() * 40);
-                const end = start + Math.floor(Math.random() * 40);
-                this.queue.push({ from, to, start, end });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.timeline-item, .project-card, .skill-category').forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            observer.observe(el);
+        });
+
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero-text');
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        class TextScramble {
+            constructor(el) {
+                this.el = el;
+                this.chars = '!<>-_\\/[]{}—=+*^?#________';
+                this.update = this.update.bind(this);
             }
 
-            cancelAnimationFrame(this.frameRequest);
-            this.frame = 0;
-            this.update();
-            return promise;
-        }
+            setText(newText) {
+                const oldText = this.el.innerText;
+                const length = Math.max(oldText.length, newText.length);
+                const promise = new Promise((resolve) => this.resolve = resolve);
+                this.queue = [];
 
-        update() {
-            let output = '';
-            let complete = 0;
+                for (let i = 0; i < length; i++) {
+                    const from = oldText[i] || '';
+                    const to = newText[i] || '';
+                    const start = Math.floor(Math.random() * 40);
+                    const end = start + Math.floor(Math.random() * 40);
+                    this.queue.push({ from, to, start, end });
+                }
 
-            for (let i = 0, n = this.queue.length; i < n; i++) {
-                let { from, to, start, end, char } = this.queue[i];
+                cancelAnimationFrame(this.frameRequest);
+                this.frame = 0;
+                this.update();
+                return promise;
+            }
 
-                if (this.frame >= end) {
-                    complete++;
-                    output += to;
-                } else if (this.frame >= start) {
-                    if (!char || Math.random() < 0.28) {
-                        char = this.randomChar();
-                        this.queue[i].char = char;
+            update() {
+                let output = '';
+                let complete = 0;
+
+                for (let i = 0, n = this.queue.length; i < n; i++) {
+                    let { from, to, start, end, char } = this.queue[i];
+
+                    if (this.frame >= end) {
+                        complete++;
+                        output += to;
+                    } else if (this.frame >= start) {
+                        if (!char || Math.random() < 0.28) {
+                            char = this.randomChar();
+                            this.queue[i].char = char;
+                        }
+                        output += `<span class="text-[#ff3e00]">${char}</span>`;
+                    } else {
+                        output += from;
                     }
-                    output += `<span class="text-[#ff3e00]">${char}</span>`;
+                }
+
+                this.el.innerHTML = output;
+
+                if (complete === this.queue.length) {
+                    this.resolve();
                 } else {
-                    output += from;
+                    this.frameRequest = requestAnimationFrame(this.update);
+                    this.frame++;
                 }
             }
 
-            this.el.innerHTML = output;
-
-            if (complete === this.queue.length) {
-                this.resolve();
-            } else {
-                this.frameRequest = requestAnimationFrame(this.update);
-                this.frame++;
+            randomChar() {
+                return this.chars[Math.floor(Math.random() * this.chars.length)];
             }
         }
 
-        randomChar() {
-            return this.chars[Math.floor(Math.random() * this.chars.length)];
-        }
-    }
+        const logo = document.getElementById('logo');
+        const fx = new TextScramble(logo);
 
-    const logo = document.getElementById('logo');
-    const fx = new TextScramble(logo);
-
-    logo.addEventListener('mouseenter', () => {
-        fx.setText('NKANYISO.');
-    });
-</script>
+        logo.addEventListener('mouseenter', () => {
+            fx.setText('NKANYISO.');
+        });
+    </script>
 </body>
 
 </html>
